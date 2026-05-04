@@ -1,13 +1,8 @@
-name: Docs
+name: docs
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
-
-permissions:
-  contents: write
+    branches: [main]
 
 jobs:
   build:
@@ -15,26 +10,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
 
-      - name: Build docs
+      - name: Copy content to docs/
         run: |
           mkdir -p docs
           cp *.md docs/ 2>/dev/null || true
-          cp -r diagrams cookbook templates case-studies docs/ 2>/dev/null || true
-          if [ -f templates/diagram-template.svg ]; then
-            mkdir -p docs/diagrams
-            cp templates/diagram-template.svg docs/diagrams/ 2>/dev/null || true
-          fi
-          mkdocs build
+          cp -r diagrams docs/ 2>/dev/null || true
+          cp -r cookbook docs/ 2>/dev/null || true
+          cp -r templates docs/ 2>/dev/null || true
+          cp -r case-studies docs/ 2>/dev/null || true
+          cp README.md docs/index.md
 
-      - uses: peaceiris/actions-gh-pages@v3
+      - name: Build site
+        run: mkdocs build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
-          publish_branch: gh-pages
