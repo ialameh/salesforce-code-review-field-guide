@@ -1,0 +1,37 @@
+/* Custom styles for Salesforce Code Review Field Guide */
+
+:root {
+  --md-primary-fg-color: #4338ca;
+  --md-primary-fg-color--light: #6366f1;
+}
+
+/* Code block styling */
+.highlight .nb {
+  color: #4338ca;
+}
+
+/* Finding table styling */
+.md-typeset table:not([class]) {
+  font-size: 0.75rem;
+}
+
+/* Severity badge styling */
+.severity-critical {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.severity-high {
+  color: #ea580c;
+  font-weight: bold;
+}
+
+.severity-medium {
+  color: #ca8a04;
+  font-weight: bold;
+}
+
+.severity-low {
+  color: #65a30d;
+  font-weight: bold;
+}
