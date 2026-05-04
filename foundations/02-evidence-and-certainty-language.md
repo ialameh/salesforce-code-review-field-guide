@@ -10,8 +10,8 @@ A finding must contain all of the following:
 
 | Element | Example |
 |---|---|
-| File name | `TPM_NCConfigController.cls` |
-| Class name | `TPM_NCConfigController` |
+| File name | `ConfigController.cls` |
+| Class name | `ConfigController` |
 | Method name | `runNow()` |
 | Line number or range | Line 47 |
 | Code pattern | `@AuraEnabled public void runNow()` |
@@ -19,7 +19,7 @@ A finding must contain all of the following:
 | Severity | High |
 | Certainty | Confirmed |
 
-A finding that says "this method may have security issues" is not a finding. A finding that says "`TPM_NCConfigController.runNow()` at line 47 is `@AuraEnabled` and enqueues a batch process with no custom permission gate. Any user with access to the Apex class can trigger the production process. Severity: High. Certainty: Confirmed." is a finding.
+A finding that says "this method may have security issues" is not a finding. A finding that says "`ConfigController.runNow()` at line 47 is `@AuraEnabled` and enqueues a batch process with no custom permission gate. Any user with access to the Apex class can trigger the production process. Severity: High. Certainty: Confirmed." is a finding.
 
 The second format produces action. The first produces argument.
 
@@ -65,7 +65,7 @@ The format:
 Example:
 
 ```text
-High | TPM_NCConfigController.runNow() | line 47 | @AuraEnabled method enqueues a batch process without a custom permission gate. Any user with Apex class access can trigger a production operation. Add FeatureManagement.checkPermission('TPM_Production_Run') before enqueueing.
+High | ConfigController.runNow() | line 47 | @AuraEnabled method enqueues a batch process without a custom permission gate. Any user with Apex class access can trigger a production operation. Add FeatureManagement.checkPermission('Production_Run') before enqueueing.
 ```
 
 ## What not to write

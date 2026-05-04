@@ -53,8 +53,8 @@ The final report uses a ranked table:
 ```md
 | Rank | Severity | Item | Effort | Impact |
 |---|---|---|---|---|
-| 1 | Critical | Missing WITH USER_MODE in TPM_NCConfigController.runNow() | S | Data corruption risk |
-| 2 | High | SOQL inside for loop in ProjectTrigger.handleAfterInsert() | S | Governor limit failure |
+| 1 | Critical | Missing WITH USER_MODE in ConfigController.runNow() | S | Data corruption risk |
+| 2 | High | SOQL inside for loop in OrderTrigger.handleAfterInsert() | S | Governor limit failure |
 ```
 
 Rank 1 is the most severe finding. Rank goes in priority order for action, not alphabetical order.

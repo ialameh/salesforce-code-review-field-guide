@@ -21,8 +21,8 @@ For every Custom Metadata Type used in the codebase, build this matrix:
 ```md
 | Metadata Field | Used By (Class.method) | Expected Behaviour | Verified? | Risk |
 |---|---|---|---|---|
-| TPM_Config__c.RunAsPermission__c | TPM_NCConfigController.runNow() | Requires custom permission to execute | Yes | None |
-| TPM_Config__c.BatchSize__c | TPM_BatchProcessor.execute() | Controls scope size per batch | No | Mismatch between config and code |
+| Config__mdt.RunAsPermission__c | ConfigController.runNow() | Requires custom permission to execute | Yes | None |
+| Config__mdt.BatchSize__c | BatchProcessor.execute() | Controls scope size per batch | No | Mismatch between config and code |
 ```
 
 ## Common metadata mismatch patterns

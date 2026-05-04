@@ -110,31 +110,31 @@ for (Order__c order : scope) {
 
 ### Example 1: Missing Sharing Model
 
-**File:** `TPM_ConfigController.cls`
-**Class:** `TPM_ConfigController`
+**File:** `ConfigController.cls`
+**Class:** `ConfigController`
 **Method:** `updateConfig()`
 **Lines:** 19-27
 
 **Pattern:**
 ```apex
-public class TPM_ConfigController { // No sharing declaration
+public class ConfigController { // No sharing declaration
     @AuraEnabled
     public static void updateConfig(Id configId, String value) {
-        TPM_Config__c config = [SELECT Id FROM TPM_Config__c WHERE Id = :configId];
+        Config__mdt config = [SELECT Id FROM Config__mdt WHERE Id = :configId];
         config.Value__c = value;
         update config; // System context, no FLS check
     }
 }
 ```
 
-**Risk:** Class runs in system context. Any authenticated user who can call this method can update any TPM_Config__c record, including production configuration values. No field-level security enforcement.
+**Risk:** Class runs in system context. Any authenticated user who can call this method can update any Config__mdt record, including production configuration values. No field-level security enforcement.
 
 **Severity:** Critical
 **Certainty:** Confirmed
 
 **Security Review Impact:** Likely fail.
 
-**Recommended Fix:** Add `with sharing` to the class. Add `Security.stripInaccessible` before DML. Add a custom permission gate for production mutations: `FeatureManagement.checkPermission('TPM_Config_Admin')`.
+**Recommended Fix:** Add `with sharing` to the class. Add `Security.stripInaccessible` before DML. Add a custom permission gate for production mutations: `FeatureManagement.checkPermission('Config_Admin')`.
 
 ---
 
