@@ -1,0 +1,114 @@
+site_name: Salesforce Code Review Field Guide
+site_description: A production-grade, multi-lens methodology for reviewing Apex, LWC, and Salesforce configurations before deployment.
+site_author: Ibrahim Alameh
+site_url: https://ialameh.github.io/salesforce-code-review-field-guide/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+
+plugins:
+  - search
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Quickstart:
+    - 00-quickstart.md
+    - Q1: quickstart/01-production-readiness-review.md
+    - Q2: quickstart/02-review-environment-setup.md
+  - Foundations:
+    - 01-mental-model.md
+    - F1: foundations/01-the-multi-lens-framework.md
+    - F2: foundations/02-evidence-and-certainty-language.md
+    - F3: foundations/03-severity-risk-ranking.md
+  - Operations:
+    - 02-day-to-day-review-process.md
+    - O1: operations/01-intake-and-inventory.md
+    - O2: operations/02-system-map.md
+    - O3: operations/03-failure-simulation.md
+    - O4: operations/04-cross-lens-contradiction-check.md
+    - O5: operations/05-reviewer-self-check.md
+  - Design and Engineering:
+    - 03-specialist-lens-reviews.md
+    - DE1: design-engineering/01-architecture-lens.md
+    - DE2: design-engineering/02-governor-limits-lens.md
+    - DE3: design-engineering/03-soql-ldv-lens.md
+    - DE4: design-engineering/04-security-authorization-lens.md
+    - DE5: design-engineering/05-bulkification-lens.md
+    - DE6: design-engineering/06-async-transaction-lens.md
+    - DE7: design-engineering/07-metadata-configuration-lens.md
+    - DE8: design-engineering/08-lwc-frontend-lens.md
+    - DE9: design-engineering/09-integration-callout-lens.md
+    - DE10: design-engineering/10-logging-observability-lens.md
+    - DE11: design-engineering/11-test-quality-lens.md
+    - DE12: design-engineering/12-cicd-packaging-lens.md
+    - DE13: design-engineering/13-code-quality-lens.md
+  - Reference and Migration:
+    - 04-reference.md
+    - R1: reference/01-final-report-format.md
+    - R2: reference/02-lens-finding-templates.md
+    - R3: reference/03-patterns-to-prefer.md
+  - Worked Material:
+    - 05-worked-examples.md
+    - WM1: worked-material/01-annotated-review-report.md
+    - WM2: worked-material/02-finding-examples-by-lens.md
+  - Project Meta:
+    - 06-project-meta.md
+    - PM1: project-meta/01-teaching-teams.md
+    - PM2: project-meta/02-review-scope-decisions.md
+  - Site and CI:
+    - 07-site-and-ci.md
+    - CI1: site-and-ci/01-github-actions-workflow.md
+    - CI2: site-and-ci/02-browser-toolkit.md
+  - Glossary: glossary.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ialameh/salesforce-code-review-field-guide
+    - icon: fontawesome/brands/github
+      link: https://ialameh.github.io/salesforce-code-review-field-guide/
+
+extra_css:
+  - stylesheets/extra.css
+
+copyright: >
+  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">
+    CC BY 4.0
+  </a>

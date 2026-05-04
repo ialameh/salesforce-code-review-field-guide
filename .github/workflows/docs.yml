@@ -1,0 +1,40 @@
+name: Docs
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build docs
+        run: |
+          mkdir -p docs
+          cp *.md docs/ 2>/dev/null || true
+          cp -r diagrams cookbook templates case-studies docs/ 2>/dev/null || true
+          if [ -f templates/diagram-template.svg ]; then
+            mkdir -p docs/diagrams
+            cp templates/diagram-template.svg docs/diagrams/ 2>/dev/null || true
+          fi
+          mkdocs build
+
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
